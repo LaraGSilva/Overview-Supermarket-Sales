@@ -5,11 +5,11 @@ import os
 
 st.set_page_config(layout='wide')
 
-with open("C:/Users/larag/Overview-Supermarket-Sales/style/style.css") as f:
-    css = f.read()
+#with open("C:/Users/larag/Overview-Supermarket-Sales/style/style.css") as f:
+ #   css = f.read()
     
 
-st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+#st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 st.title('Dashboard Supermarket Sales')
 
 
