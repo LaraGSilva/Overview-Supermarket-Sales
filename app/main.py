@@ -5,6 +5,14 @@ import os
 
 st.set_page_config(layout='wide')
 
+with open("C:/Users/larag/Overview-Supermarket-Sales/style/style.css") as f:
+    css = f.read()
+    
+
+st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+st.title('Dashboard Supermarket Sales')
+
+
 # Abrindo o arquivo
 try:
     script_dir = os.path.dirname(__file__)
@@ -31,6 +39,27 @@ if city == 'All Cities':
     df_filtered = df[df['Month'] == month]
 else:
     df_filtered = df[(df['Month'] == month) & (df['City'] == city)]
+
+# Big numbers
+
+cola, colb, colc , cold= st.columns(4)
+
+with cola:
+    bn_vendas = (f'R$ {round((df['Total'].sum()),2)}')
+    st.metric(label='Total vendas', value=bn_vendas, delta=0)
+
+with colb:
+    bn_rating = (f'{round(df['Rating'].mean(),2)}')
+    st.metric(label='Média de Rating', value=bn_rating, delta=0)
+
+with colc:
+    bn_quantity = (f'{round(df['Quantity'].mean(),0)}')
+    st.metric(label='Média de Quantidade de produto', value=bn_quantity, delta=0)
+
+with cold:
+    bn_unit= (f'{round(df['Unit price'].mean(),2)}')
+    st.metric(label='Média de Preço unitário', value=bn_unit, delta=0)
+    
 
 # Estrutura do app
 col1, col2 = st.columns(2)
