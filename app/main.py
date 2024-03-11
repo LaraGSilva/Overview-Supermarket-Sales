@@ -3,13 +3,31 @@ import pandas as pd
 import plotly.express as px
 import os
 
-st.set_page_config(layout='wide')
+st.set_page_config(
+    layout='wide',
+    page_title = 'Dashboard Supermarket Sales'
+)
+
+st.title('Main page')
+
+if st.sidebar.button('overview'):
+   from overview import overview
+
+def redirect_to_overview():
+    query_params = st.experimental_get_query_params()
+    query_params['page'] = 'overview'
+    url = st.experimental_get_url(query_params)
+    st.experimental_rerun()
+    st.stop()
+
+if st.sidebar.button('overview'):
+   from overview import overview
 
 #with open("C:/Users/larag/Overview-Supermarket-Sales/style/style.css") as f:
  #   css = f.read()
     
 #st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
-st.title('Dashboard Supermarket Sales')
+#st.title('Dashboard Supermarket Sales')
 
 # Abrindo o arquivo
 try:
